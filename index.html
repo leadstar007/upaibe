@@ -19,6 +19,41 @@
             <pre id="response"></pre>
         </section>
     </main>
+    <h2>🛠 UPAIBE Backend Tester</h2>
+
+<!-- Report Generator -->
+<section>
+  <h3>/report</h3>
+  <input type="text" id="reportFocus" placeholder="Focus (e.g. monthly performance)">
+  <button onclick="testReport()">Generate Report</button>
+  <pre id="reportOutput"></pre>
+</section>
+
+<!-- Lead Scraper -->
+<section>
+  <h3>/leads/live</h3>
+  <input type="text" id="leadIndustry" placeholder="Industry (e.g. plumber)">
+  <input type="text" id="leadLocation" placeholder="Location (e.g. Sydney)">
+  <button onclick="testLeads()">Scrape Leads</button>
+  <pre id="leadsOutput"></pre>
+</section>
+
+<!-- Follow-up Email -->
+<section>
+  <h3>/email/followup</h3>
+  <textarea id="leadInfo" placeholder='{"name":"Jane","service":"Consulting"}'></textarea>
+  <button onclick="testFollowupEmail()">Generate Email</button>
+  <pre id="emailOutput"></pre>
+</section>
+
+<!-- Onboarding Quiz -->
+<section>
+  <h3>/onboarding/quiz</h3>
+  <input type="text" id="quizIndustry" placeholder="Industry (e.g. coaching)">
+  <button onclick="testOnboardingQuiz()">Generate Quiz</button>
+  <pre id="quizOutput"></pre>
+</section>
+
     <footer>
         <p>&copy; 2025 Unique Point. All rights reserved.</p>
     </footer>
