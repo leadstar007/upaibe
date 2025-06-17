@@ -1,13 +1,13 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from openai import OpenAI
+import openai
 import os
 
 app = Flask(__name__)
 CORS(app)
 
-# Initialize OpenAI client
-client = OpenAI(api_key=os.getenv("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"))
+# Use environment variable for security
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.route("/gpt", methods=["POST"])
 def gpt():
@@ -17,7 +17,7 @@ def gpt():
         return jsonify({"error": "No prompt provided"}), 400
 
     try:
-        response = client.chat.completions.create(
+        response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt}],
             max_tokens=150
