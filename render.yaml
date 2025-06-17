@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: upaibe-app
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: gunicorn main:app
+    autoDeploy: true
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
