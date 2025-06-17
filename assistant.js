@@ -4,7 +4,7 @@ async function sendPrompt() {
     responseDisplay.textContent = "Thinking...";
 
     try {
-        const res = await fetch("https://upaibe-app.onrender.com/gpt", {
+        const res = await fetch("https://upaibe-web-services.onrender.com/gpt", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
