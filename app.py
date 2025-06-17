@@ -1,13 +1,13 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS  # ✅ add this
-import openai
-import os  # ✅ Add this line
+from flask_cors import CORS
+from openai import OpenAI
+import os
 
 app = Flask(__name__)
-CORS(app)  # ✅ allow all origins
+CORS(app)
 
-
-openai.api_key = os.getenv("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")
+# Initialize OpenAI client
+client = OpenAI(api_key=os.getenv("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"))
 
 @app.route("/gpt", methods=["POST"])
 def gpt():
@@ -15,13 +15,14 @@ def gpt():
     prompt = data.get("prompt", "")
     if not prompt:
         return jsonify({"error": "No prompt provided"}), 400
+
     try:
-        response = openai.Completion.create(
-            engine="text-davinci-003",
-            prompt=prompt,
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": prompt}],
             max_tokens=150
         )
-        return jsonify({"response": response.choices[0].text.strip()})
+        return jsonify({"response": response.choices[0].message.content.strip()})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
