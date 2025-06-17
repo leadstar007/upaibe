@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS  # ✅ add this
+import openai
+import os  # ✅ Add this line
 
 app = Flask(__name__)
 CORS(app)  # ✅ allow all origins
